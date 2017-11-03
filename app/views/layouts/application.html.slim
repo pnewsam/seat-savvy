@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Seat Savvy
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.is-primary
+      .navbar-brand
+        a.navbar-item href="" Seat Savvy
+        .navbar-burger
+          span
+          span
+          span
+      .navbar-menu
+        .navbar-start
+        .navbar-end
+          a.navbar-item href="" Link
+          a.navbar-item href="" Link
+          a.navbar-item href="" Link
+    p.notice = notice
+    p.alert = alert
+    section.section
+      .container
+        = yield
