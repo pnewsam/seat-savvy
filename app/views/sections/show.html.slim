@@ -1,5 +1,21 @@
 h2.title.is-2 = @section.name
 
+table.table.is-bordered
+  thead
+    tr
+      th Name
+      th Edit
+  tbody
+    - @students.each do |s|
+      tr
+        td
+          = s.name
+        td
+          = link_to "Edit", edit_section_student_path(s)
+
+= link_to "Add a Student to this Section", new_section_student_path(@section)
+br
+br
 = link_to "Edit this Section", edit_section_path(@section)
 br
 br

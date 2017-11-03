@@ -1,0 +1,8 @@
+h2.title.is-2 Add a Student to #{@section.name}
+
+= form_for [@section, @student] do |f|
+  .field
+    = f.label :name, "Name", class: "label"
+    .control
+      = f.text_field :name, class: "input"
+  = f.submit "Add Student", class: "button is-primary"
