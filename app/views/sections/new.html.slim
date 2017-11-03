@@ -1,0 +1,8 @@
+h2.title.is-2 Create a new Section
+
+= form_for(@section) do |f|
+  .field
+    = f.label "Name", class: "label"
+    .control
+      = f.text_field :name, class: "input"
+  = f.submit 'Create Section', class: "button is-primary"

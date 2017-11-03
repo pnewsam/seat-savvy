@@ -16,7 +16,7 @@ html
       .navbar-menu
         .navbar-start
         .navbar-end
-          a.navbar-item href="" Link
+          = link_to 'Sections', sections_path, class: "navbar-item"
           a.navbar-item href="" Link
           - if !current_teacher
             .navbar-item
@@ -32,3 +32,6 @@ html
     section.section
       .container
         = yield
+
+    footer.footer
+      p.has-text-centered &copy; Paul Newsam 2017

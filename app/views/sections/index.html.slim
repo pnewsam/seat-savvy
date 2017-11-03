@@ -1,0 +1,4 @@
+h2.title.is-2 Sections
+
+- @sections.map do |s|
+  h3.title.is-3 = link_to s.name, section_path(s)
