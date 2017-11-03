@@ -8,7 +8,7 @@ html
   body
     nav.navbar.is-primary
       .navbar-brand
-        a.navbar-item href="" Seat Savvy
+        = link_to "Seat Savvy", root_path, class: "navbar-item"
         .navbar-burger
           span
           span
@@ -16,11 +16,19 @@ html
       .navbar-menu
         .navbar-start
         .navbar-end
-          a.navbar-item href="/teachers/sign_in" Log In
           a.navbar-item href="" Link
           a.navbar-item href="" Link
-    p.notice = notice
-    p.alert = alert
+          - if !current_teacher
+            .navbar-item
+              = link_to "Log In", new_teacher_session_path, class: "button is-info"
+          - else
+            a.navbar-item Logged in as #{current_teacher.email}
+            .navbar-item
+              = link_to "Log Out", destroy_teacher_session_path, method: :delete, class: "button is-danger"
+    - if notice
+      p.notice.notification.is-success = notice
+    - if alert
+      p.alert.notification.is-danger = alert
     section.section
       .container
         = yield
