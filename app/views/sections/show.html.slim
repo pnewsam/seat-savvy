@@ -5,13 +5,16 @@ table.table.is-bordered
     tr
       th Name
       th Edit
+      th Delete
   tbody
     - @students.each do |s|
       tr
         td
           = s.name
         td
-          = link_to "Edit", edit_section_student_path(s)
+          = link_to "Edit", edit_section_student_path(@section, s)
+        td
+          = link_to "Delete", section_student_path(@section, s), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this student?"}
 
 = link_to "Add a Student to this Section", new_section_student_path(@section)
 br

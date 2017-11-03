@@ -18,6 +18,35 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit
+    @student = Student.find(params[:id])
+    @section = Section.find(params[:section_id])
+  end
+
+  def update
+    student = Student.find(params[:id])
+    section = Section.find(params[:section_id])
+    if student.update(student_params)
+      redirect_to section_path(section)
+      flash[:notice] = "Student succesfully updated!"
+    else
+      redirect_to section_path(section)
+      flash[:alert] = "Something went wrong!"
+    end
+  end
+
+  def destroy
+    student = Student.find(params[:id])
+    section = Section.find(params[:section_id])
+    if student.destroy
+      redirect_to section_path(section)
+      flash[:notice] = "Student succesfully deleted!"
+    else
+      redirect_to section_path(section)
+      flash[:alert] = "Something went wrong!"
+    end
+  end
+
   private
   def student_params
     params.require(:student).permit(:name)
