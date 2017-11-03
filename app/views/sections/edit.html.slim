@@ -1,0 +1,8 @@
+h2.title.is-2 Edit #{@section.name}
+
+= form_for(@section) do |f|
+  .field
+    = f.label "Name", class: "label"
+    .control
+      = f.text_field :name, class: "input"
+  = f.submit 'Update Section', class: "button is-primary"

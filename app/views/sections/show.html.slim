@@ -1,0 +1,6 @@
+h2.title.is-2 = @section.name
+
+= link_to "Edit this Section", edit_section_path(@section)
+br
+br
+= link_to "Delete this Section", section_path(@section), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this section?"}
