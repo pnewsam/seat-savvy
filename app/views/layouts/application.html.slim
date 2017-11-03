@@ -17,7 +17,6 @@ html
         .navbar-start
         .navbar-end
           = link_to 'Sections', sections_path, class: "navbar-item"
-          a.navbar-item href="" Link
           - if !current_teacher
             .navbar-item
               = link_to "Log In", new_teacher_session_path, class: "button is-info"
