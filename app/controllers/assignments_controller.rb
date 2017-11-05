@@ -35,6 +35,18 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def destroyg
+    section = Section.find(params[:section_id])
+    assignment = Assignment.find(params[:id])
+    if assignment.destroy
+      redirect_to section_path(section)
+      flash[:notice] = "Assignment successfully deleted!"
+    else
+      redirect_to section_path(section)
+      flash[:warning] = "Something went wrong!"
+    end
+  end
+
   private
   def assignment_params
     params.require(:assignment).permit(:name)
