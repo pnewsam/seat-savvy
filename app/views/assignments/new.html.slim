@@ -1,0 +1,8 @@
+h2.title.is-2 Create an Assignment for #{@section.name}
+
+= form_for [@section, @assignment] do |f|
+  .field
+    = f.label :name, "Name", class: "label"
+    .control
+      = f.text_field :name, class: "input"
+  = f.submit "Create Assignment", class: "button is-primary"

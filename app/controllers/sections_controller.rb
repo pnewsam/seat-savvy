@@ -7,6 +7,7 @@ class SectionsController < ApplicationController
   def show
     @section = Section.find(params[:id])
     @students = @section.students
+    @assignments = @section.assignments
   end
   
   def create
