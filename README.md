@@ -1,24 +1,8 @@
-# README
+# Seat Savvy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to help teachers keep grades on daily assignments. Grade by a customizable seating chart!
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## To Do List
+- [] Add Assignment model
+- [] Add Seating Chart to Sections
+- [] Introduce react-rails with webpacker
