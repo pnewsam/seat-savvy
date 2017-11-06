@@ -30,7 +30,7 @@ h2.title.is-2 = @section.name
         - @assignments.each do |a|
           tr
             td
-              = a.name
+              = link_to "#{a.name}", section_assignment_path(@section, a)
             td
               = link_to "Edit", edit_section_assignment_path(@section, a)
             td

@@ -1,5 +1,10 @@
 class AssignmentsController < ApplicationController
   
+  def show
+    @assignment = Assignment.find(params[:id])
+    @grades = @assignment.grades
+  end
+
   def new
     @section = Section.find(params[:section_id])
     @assignment = Assignment.new
@@ -35,7 +40,7 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  def destroyg
+  def destroy
     section = Section.find(params[:section_id])
     assignment = Assignment.find(params[:id])
     if assignment.destroy
