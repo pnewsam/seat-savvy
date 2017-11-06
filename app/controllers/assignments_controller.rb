@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
   
   def show
+    @section = Section.find(params[:section_id])
     @assignment = Assignment.find(params[:id])
     @grades = @assignment.grades
   end
@@ -54,6 +55,6 @@ class AssignmentsController < ApplicationController
 
   private
   def assignment_params
-    params.require(:assignment).permit(:name)
+    params.require(:assignment).permit(:name, grades_attributes: [:id, :value])
   end
 end
