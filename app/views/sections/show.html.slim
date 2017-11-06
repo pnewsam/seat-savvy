@@ -1,6 +1,20 @@
 h2.title.is-2 = @section.name
 
 .columns
+  .column.is-4
+    aside.menu.card
+      .card-content
+        p.menu-label General
+        ul.menu-list
+          li = link_to "Edit this Section", edit_section_path(@section)
+          li = link_to "Delete this Section", section_path(@section), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this section?"}
+        p.menu-label Assignments
+        ul.menu-list
+          li = link_to "Create an Assignment", new_section_assignment_path(@section)
+        p.menu-label Students
+        ul.menu-list
+          li = link_to "Add a Student", new_section_student_path(@section)
+      
   .column
     h3.title.is-3 Students
     table.table.is-bordered
@@ -36,13 +50,13 @@ h2.title.is-2 = @section.name
             td
               = link_to "Delete", section_assignment_path(@section, a), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this assignment?"}
 
-= link_to "Create an Assignment", new_section_assignment_path(@section)
-br
-br
-= link_to "Add a Student", new_section_student_path(@section)
-br
-br
-= link_to "Edit this Section", edit_section_path(@section)
-br
-br
-= link_to "Delete this Section", section_path(@section), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this section?"}
+/ = link_to "Create an Assignment", new_section_assignment_path(@section)
+/ br
+/ br
+/ = link_to "Add a Student", new_section_student_path(@section)
+/ br
+/ br
+/ = link_to "Edit this Section", edit_section_path(@section)
+/ br
+/ br
+/ = link_to "Delete this Section", section_path(@section), method: "delete", class: "has-text-danger", data: {confirm: "Are you sure you want to delete this section?"}
