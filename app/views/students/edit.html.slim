@@ -6,3 +6,6 @@ h2.title.is-2 Edit #{@student.name}
     .control
       = f.text_field :name, class: "input"
   = f.submit "Update Student", class: "button is-primary"
+
+br
+= link_to "Back to #{@section.name}", section_path(@section)
