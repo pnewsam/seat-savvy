@@ -1,9 +1,8 @@
-h2.title.is-2 = @section.name
-
 .columns
   .column.is-4
     aside.menu.card
       .card-content
+        h2.title.is-2 = @section.name
         p.menu-label General
         ul.menu-list
           li = link_to "Edit this Section", edit_section_path(@section)
