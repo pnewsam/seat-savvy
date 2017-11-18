@@ -6,3 +6,9 @@ An app to help teachers keep grades on daily assignments. Grade by a customizabl
 - [x] Add Assignment model
 - [] section.seats & assignment.grades to be JSONB fields
 - [] Introduce react-rails with webpacker
+
+## Dependencies
+- Devise
+- Slim
+- Bulma
+- Webpacker
