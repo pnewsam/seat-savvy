@@ -7,5 +7,7 @@ h2.title.is-2 Edit #{@section.name}
       = f.text_field :name, class: "input"
   = f.submit 'Update Section', class: "button is-primary"
 
+= link_to 'Create a Seating Chart', new_section_seating_chart_path(@section)
+
 br
 = link_to "Back to #{@section.name}", section_path(@section)

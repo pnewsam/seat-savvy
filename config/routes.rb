@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :assignments, only: [:show, :create, :new, :edit, :update, :destroy] do
       resources :grades
     end
+    resource :seating_chart, only: [:new, :create, :edit, :update]
   end
 
   root to: "welcome#index"
