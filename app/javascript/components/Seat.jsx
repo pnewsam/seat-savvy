@@ -21,7 +21,7 @@ const Seat = props => {
   console.log(typeof props.coords[0]);
   return (
     <Div x={props.coords[0]} y={props.coords[1]} seatWidth={props.seatWidth}>
-      <P>Name</P>
+      <P>{props.children}</P>
     </Div>
   );
 };
