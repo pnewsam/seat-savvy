@@ -5,12 +5,19 @@ import Seating from './Seating';
 class SeatingChartForm extends Component {
   constructor(props) {
     super(props);
+    this.updateSeats = this.updateSeats.bind(this);
     this.state = {
       phase: 1,
+      seats: {},
     };
   }
 
-  componentDidMount() {}
+  updateSeats(seats) {
+    this.setState({
+      seats: seats,
+      phase: 2,
+    });
+  }
 
   render() {
     switch (this.state.phase) {
@@ -18,15 +25,16 @@ class SeatingChartForm extends Component {
         return (
           <div className="columns">
             <div className="column">
-              <Configuration />
+              <Configuration updateSeats={this.updateSeats} />
             </div>
           </div>
         );
       case 2:
+        console.log(this.state.seats);
         return (
           <div className="columns">
-            <div className="column is-8">
-              <Seating />
+            <div className="column">
+              <Seating seats={this.state.seats} />
             </div>
           </div>
         );

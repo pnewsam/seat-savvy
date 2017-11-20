@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import lang from 'lodash/lang';
+import { isEmpty } from 'lodash/lang';
 import Seat from './Seat';
 
 const Chart = styled.div`
@@ -9,7 +9,7 @@ const Chart = styled.div`
 `;
 
 const SeatingChart = props => {
-  if (lang.isEmpty(props.seats)) {
+  if (isEmpty(props.seats)) {
     return <div />;
   } else {
     const seatWidth = 100;

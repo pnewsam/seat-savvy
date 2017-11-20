@@ -1,6 +1,16 @@
 class StudentsController < ApplicationController
   before_action :authenticate_teacher!
   
+  def index
+    section = Section.find(params[:section_id])
+    students = section.students
+    puts Rails.logger.info(request.env)    
+    respond_to do |format|
+      format.html { render json: students }
+      format.js { render json: students }
+    end
+  end
+
   def new
     @section = Section.find(params[:section_id])
     @student = Student.new

@@ -5,6 +5,8 @@ class Configuration extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateSeats = props.updateSeats;
     this.state = {
       columns: 5,
       rows: 5,
@@ -29,14 +31,18 @@ class Configuration extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.updateSeats(this.generateSeats());
+  }
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <h3 className="title is-3">
           First, select the number of columns and rows.
         </h3>
-        <form action="">
+        <form onSubmit={this.handleSubmit}>
           <div className="field">
             <label htmlFor="rows" className="label">
               Number of rows
