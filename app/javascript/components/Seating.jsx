@@ -32,8 +32,17 @@ class Seating extends Component {
       <div>
         <h3 className="title is-3">Now, seat your students.</h3>
         <form />
-        <SeatingChart seats={this.state.seats} />
-        <ul>{this.state.students.map(s => <li key={s.id}>{s.name}</li>)}</ul>
+        <div className="columns">
+          <div className="column is-8">
+            <SeatingChart seats={this.state.seats} />
+          </div>
+          <div className="column is-4">
+            <ul>
+              {this.state.students.map(s => <li key={s.id}>{s.name}</li>)}
+            </ul>
+          </div>
+        </div>
+
         <button className="button is-warning">Back</button>
       </div>
     );
