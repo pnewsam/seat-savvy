@@ -2,8 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Li = styled.li`
-  background-color: ${props => (props.selected ? 'seagreen' : 'none')};
-  color: ${props => (props.selected ? '#fff' : 'black')};
+  background-color: ${props =>
+    props.selected ? 'hsl(171, 100%, 41%)' : 'none'};
+  color: ${props => (props.selected ? '#fff' : 'hsl(0, 0%, 29%)')};
+  &:hover {
+    background-color: ${props =>
+      props.selected ? 'hsl(171, 100%, 41%)' : 'whitesmoke'};
+  }
+  padding: 0.5rem;
 `;
 
 const Student = props => {

@@ -25,7 +25,7 @@ const FormifiedSeatingChart = props => {
             key={s[0]}
             coords={s[0]}
             seatWidth={seatWidth}
-            value={s[1] || 'Empty'}
+            value={s[1]}
             handleClick={props.handleSeatClick}
           >
             {s[0]}

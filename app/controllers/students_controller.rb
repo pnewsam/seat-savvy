@@ -4,7 +4,6 @@ class StudentsController < ApplicationController
   def index
     section = Section.find(params[:section_id])
     students = section.students
-    puts Rails.logger.info(request.env)    
     respond_to do |format|
       format.html { render json: students }
       format.js { render json: students }

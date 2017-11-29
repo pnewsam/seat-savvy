@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SeatingChart from './SeatingChart';
 import FormifiedSeatingChart from './FormifiedSeatingChart';
-import Student from './Student';
+import StudentList from './StudentList';
 import axios from 'axios';
 
 class Seating extends Component {
@@ -74,20 +74,13 @@ class Seating extends Component {
             />
           </div>
           <div className="column is-4">
-            <ul>
-              {this.state.students.map(s => (
-                <Student
-                  key={s.id}
-                  dataStudentid={s.id}
-                  handleClick={this.handleStudentClick}
-                  name={s.name}
-                  selected={this.state.selectedStudentId == s.id}
-                />
-              ))}
-            </ul>
+            <StudentList
+              students={this.state.students}
+              selectedStudentId={this.state.selectedStudentId}
+              handleClick={this.handleStudentClick}
+            />
           </div>
         </div>
-
         <button className="button is-warning">Back</button>
       </div>
     );
