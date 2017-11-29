@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import SeatingChart from './SeatingChart';
+import FormifiedSeatingChart from './FormifiedSeatingChart';
+import Student from './Student';
 import axios from 'axios';
 
 class Seating extends Component {
   constructor(props) {
     super(props);
+    this.handleStudentClick = this.handleStudentClick.bind(this);
+    this.handleSeatClick = this.handleSeatClick.bind(this);
     this.state = {
       seats: props.seats,
       students: [],
+      selectedStudentId: null,
     };
   }
 
@@ -27,6 +32,35 @@ class Seating extends Component {
       .catch(e => console.log(e));
   }
 
+  updateSelectedStudentId() {
+    console.log(updateSelectedStudentId);
+  }
+
+  handleStudentClick(e) {
+    let id = e.target.getAttribute('data-studentid');
+    this.setState({
+      selectedStudentId: id,
+    });
+  }
+
+  handleSeatClick(e) {
+    console.log('seat click!');
+    let coords = e.currentTarget.getAttribute('data-coords');
+    this.setState({
+      seats: Object.assign(
+        this.state.seats,
+        {},
+        {
+          [coords]: this.state.selectedStudentId,
+        },
+      ),
+    });
+  }
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
   render() {
     return (
       <div>
@@ -34,11 +68,22 @@ class Seating extends Component {
         <form />
         <div className="columns">
           <div className="column is-8">
-            <SeatingChart seats={this.state.seats} />
+            <FormifiedSeatingChart
+              seats={this.state.seats}
+              handleSeatClick={this.handleSeatClick}
+            />
           </div>
           <div className="column is-4">
             <ul>
-              {this.state.students.map(s => <li key={s.id}>{s.name}</li>)}
+              {this.state.students.map(s => (
+                <Student
+                  key={s.id}
+                  dataStudentid={s.id}
+                  handleClick={this.handleStudentClick}
+                  name={s.name}
+                  selected={this.state.selectedStudentId == s.id}
+                />
+              ))}
             </ul>
           </div>
         </div>
