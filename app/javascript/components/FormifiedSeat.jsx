@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { find } from 'lodash/collection';
 
 const Div = styled.div`
   border: solid 1px hsl(0, 0%, 86%);
@@ -21,6 +22,12 @@ const P = styled.p`
 `;
 
 const FormifiedSeat = props => {
+  let name;
+  if (props.value) {
+    name = find(props.students, function(s) {
+      return s.id == props.value;
+    }).name;
+  }
   return (
     <Div
       x={props.coords[0]}
@@ -30,8 +37,8 @@ const FormifiedSeat = props => {
       data-coords={props.coords}
       occupied={props.value != undefined}
     >
-      <input type="hidden" value={props.value} />
-      <P>{props.value || 'Empty'}</P>
+      <input type="hidden" value={props.value || ''} />
+      <P>{name || 'Empty'}</P>
     </Div>
   );
 };

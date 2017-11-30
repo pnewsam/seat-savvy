@@ -9,7 +9,6 @@ const Chart = styled.div`
 `;
 
 const FormifiedSeatingChart = props => {
-  console.log(props.handleSeatClick);
   if (isEmpty(props.seats)) {
     return <div />;
   } else {
@@ -27,6 +26,7 @@ const FormifiedSeatingChart = props => {
             seatWidth={seatWidth}
             value={s[1]}
             handleClick={props.handleSeatClick}
+            students={props.students}
           >
             {s[0]}
           </FormifiedSeat>

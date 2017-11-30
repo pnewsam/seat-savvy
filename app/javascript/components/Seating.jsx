@@ -19,7 +19,6 @@ class Seating extends Component {
   componentDidMount() {
     let ids = window.location.pathname.match(/^\d+|\d+\b|\d+(?=\w)/g);
     let sectionId = ids[0];
-    console.log(sectionId);
     axios({
       method: 'get',
       url: `/sections/${sectionId}/students`,
@@ -30,10 +29,6 @@ class Seating extends Component {
         this.setState({ students: r.data });
       })
       .catch(e => console.log(e));
-  }
-
-  updateSelectedStudentId() {
-    console.log(updateSelectedStudentId);
   }
 
   handleStudentClick(e) {
@@ -71,6 +66,7 @@ class Seating extends Component {
             <FormifiedSeatingChart
               seats={this.state.seats}
               handleSeatClick={this.handleSeatClick}
+              students={this.state.students}
             />
           </div>
           <div className="column is-4">
