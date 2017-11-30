@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Configuration from './Configuration';
 import Seating from './Seating';
+import Complete from './Complete';
 
 class SeatingChartForm extends Component {
   constructor(props) {
     super(props);
     this.updateSeats = this.updateSeats.bind(this);
+    this.progressPhase = this.progressPhase.bind(this);
     this.state = {
       phase: 1,
       seats: {},
@@ -15,7 +17,13 @@ class SeatingChartForm extends Component {
   updateSeats(seats) {
     this.setState({
       seats: seats,
-      phase: 2,
+    });
+    this.progressPhase();
+  }
+
+  progressPhase() {
+    this.setState({
+      phase: this.state.phase + 1,
     });
   }
 
@@ -30,11 +38,21 @@ class SeatingChartForm extends Component {
           </div>
         );
       case 2:
-        console.log(this.state.seats);
         return (
           <div className="columns">
             <div className="column">
-              <Seating seats={this.state.seats} />
+              <Seating
+                seats={this.state.seats}
+                progressPhase={this.progressPhase}
+              />
+            </div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="columns">
+            <div className="column">
+              <Complete />
             </div>
           </div>
         );

@@ -10,6 +10,7 @@ class Seating extends Component {
     this.handleStudentClick = this.handleStudentClick.bind(this);
     this.handleSeatClick = this.handleSeatClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.progressPhase = props.progressPhase;
     this.state = {
       seats: props.seats,
       students: [],
@@ -60,7 +61,6 @@ class Seating extends Component {
     e.preventDefault();
     let ids = window.location.pathname.match(/^\d+|\d+\b|\d+(?=\w)/g);
     let sectionId = ids[0];
-
     axios({
       method: 'post',
       url: `/sections/${sectionId}/seating_chart`,
@@ -76,6 +76,7 @@ class Seating extends Component {
     })
       .then(r => {
         console.log(r);
+        this.progressPhase();
       })
       .catch(e => {
         console.log(e);
