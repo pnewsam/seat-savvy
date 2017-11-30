@@ -18,20 +18,25 @@ const FormifiedSeatingChart = props => {
     let chartWidth = seatWidth * (Number(last[0]) + 1);
     let chartHeight = seatWidth * (Number(last[1]) + 1);
     return (
-      <Chart width={chartWidth} height={chartHeight}>
-        {Object.entries(props.seats).map(s => (
-          <FormifiedSeat
-            key={s[0]}
-            coords={s[0]}
-            seatWidth={seatWidth}
-            value={s[1]}
-            handleClick={props.handleSeatClick}
-            students={props.students}
-          >
-            {s[0]}
-          </FormifiedSeat>
-        ))}
-      </Chart>
+      <form action="" onSubmit={props.handleSubmit}>
+        <Chart width={chartWidth} height={chartHeight}>
+          {Object.entries(props.seats).map(s => (
+            <FormifiedSeat
+              key={s[0]}
+              coords={s[0]}
+              seatWidth={seatWidth}
+              value={s[1]}
+              handleClick={props.handleSeatClick}
+              students={props.students}
+            >
+              {s[0]}
+            </FormifiedSeat>
+          ))}
+        </Chart>
+        <button type="submit" className="button is-primary">
+          Submit
+        </button>
+      </form>
     );
   }
 };

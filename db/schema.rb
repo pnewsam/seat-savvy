@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171106002410) do
 
   create_table "sections", force: :cascade do |t|
     t.string "name", null: false
-    t.jsonb "seat_assignments", default: {}, null: false
+    t.jsonb "seating_chart", default: {}, null: false
     t.integer "teacher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

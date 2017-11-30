@@ -9,10 +9,14 @@ class Seating extends Component {
     super(props);
     this.handleStudentClick = this.handleStudentClick.bind(this);
     this.handleSeatClick = this.handleSeatClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       seats: props.seats,
       students: [],
       selectedStudentId: null,
+      token: document
+        .querySelector('meta[name=csrf-token]')
+        .getAttribute('content'),
     };
   }
 
@@ -52,6 +56,32 @@ class Seating extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    let ids = window.location.pathname.match(/^\d+|\d+\b|\d+(?=\w)/g);
+    let sectionId = ids[0];
+
+    axios({
+      method: 'post',
+      url: `/sections/${sectionId}/seating_chart`,
+      headers: {
+        'X-CSRF-Token': this.state.token,
+      },
+      data: {
+        section: {
+          seating_chart: this.state.seats,
+        },
+      },
+      contentType: 'application/json',
+    })
+      .then(r => {
+        console.log(r);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
   componentDidUpdate() {
     console.log(this.state);
   }
@@ -60,13 +90,13 @@ class Seating extends Component {
     return (
       <div>
         <h3 className="title is-3">Now, seat your students.</h3>
-        <form />
         <div className="columns">
           <div className="column is-8">
             <FormifiedSeatingChart
               seats={this.state.seats}
               handleSeatClick={this.handleSeatClick}
               students={this.state.students}
+              handleSubmit={this.handleSubmit}
             />
           </div>
           <div className="column is-4">
@@ -77,6 +107,7 @@ class Seating extends Component {
             />
           </div>
         </div>
+
         <button className="button is-warning">Back</button>
       </div>
     );
