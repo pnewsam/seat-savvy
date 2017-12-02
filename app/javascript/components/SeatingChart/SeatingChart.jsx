@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { isEmpty } from 'lodash/lang';
-import FormifiedSeat from './FormifiedSeat';
+import Seat from './Seat';
 
 const Chart = styled.div`
   width: ${props => props.width}px;
@@ -21,7 +21,7 @@ const FormifiedSeatingChart = props => {
       <form action="" onSubmit={props.handleSubmit}>
         <Chart width={chartWidth} height={chartHeight}>
           {Object.entries(props.seats).map(s => (
-            <FormifiedSeat
+            <Seat
               key={s[0]}
               coords={s[0]}
               seatWidth={seatWidth}
@@ -30,7 +30,7 @@ const FormifiedSeatingChart = props => {
               students={props.students}
             >
               {s[0]}
-            </FormifiedSeat>
+            </Seat>
           ))}
         </Chart>
         <button type="submit" className="button is-primary">

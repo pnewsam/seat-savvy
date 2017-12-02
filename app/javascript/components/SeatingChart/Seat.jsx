@@ -21,7 +21,7 @@ const P = styled.p`
   vertical-align: middle;
 `;
 
-const FormifiedSeat = props => {
+const Seat = props => {
   let name;
   if (props.value) {
     name = find(props.students, function(s) {
@@ -43,4 +43,4 @@ const FormifiedSeat = props => {
   );
 };
 
-export default FormifiedSeat;
+export default Seat;

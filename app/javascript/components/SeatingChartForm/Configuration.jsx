@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SeatingChart from './SeatingChart';
+import SeatingChart from '../SeatingChart/SeatingChart';
 
 class Configuration extends Component {
   constructor(props) {

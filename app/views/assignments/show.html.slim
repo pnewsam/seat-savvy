@@ -1,19 +1,5 @@
 h2.title.is-2 = @assignment.name
 
-/ h3.title.is-3 Grades
-/ table.table.is-bordered
-/   thead
-/     tr
-/       th Student
-/       th Grade
-/   tbody
-/     - @grades.each do |g|
-/       tr
-/         td
-/           = g.student.name
-/         td
-/           = g.value
-
 h3.title.is-3 Edit Grades
 = form_for [@section, @assignment] do |a|
   = a.fields_for :grades do |g|
@@ -22,6 +8,11 @@ h3.title.is-3 Edit Grades
       .control
         = g.text_field :value, class: "input", value: g.object.value
   = a.submit "Update Grades", class: "button is-primary"
+
+br
+#grades-form
+
+= javascript_pack_tag 'grades_form'
 
 br
   = link_to "Back to #{@section.name}", section_path(@section)

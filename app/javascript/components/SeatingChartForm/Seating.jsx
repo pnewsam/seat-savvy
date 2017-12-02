@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import SeatingChart from './SeatingChart';
-import FormifiedSeatingChart from './FormifiedSeatingChart';
+import SeatingChart from '../SeatingChart/SeatingChart';
 import StudentList from './StudentList';
 import axios from 'axios';
 
@@ -93,7 +92,7 @@ class Seating extends Component {
         <h3 className="title is-3">Now, seat your students.</h3>
         <div className="columns">
           <div className="column is-8">
-            <FormifiedSeatingChart
+            <SeatingChart
               seats={this.state.seats}
               handleSeatClick={this.handleSeatClick}
               students={this.state.students}

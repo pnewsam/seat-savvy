@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import SeatingChartForm from '../components/SeatingChartForm.jsx';
+import SeatingChartForm from '../components/SeatingChartForm/SeatingChartForm.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
